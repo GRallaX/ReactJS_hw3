@@ -33,22 +33,16 @@ export const initalState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.EDIT_VALUE: {
+      const newRegSteps = [...state.registrationSteps];
+      const newInputData = {
+        ...newRegSteps[state.currentStep - 1][action.payload.infoType],
+        value: action.payload.value,
+      };
+      newRegSteps.splice(state.currentStep - 1, 1, newInputData);
+
       return {
         ...state,
-        registrationSteps: state.registrationSteps.map((inputData, index) => {
-          if (index !== state.currentStep - 1) {
-            return inputData;
-          }
-          if (action.payload.infoType in inputData) {
-            const key = action.payload.infoType;
-            return {
-              ...inputData,
-              [key]: { ...inputData[key], value: action.payload.value },
-            };
-          } else {
-            return inputData;
-          }
-        }),
+        registrationSteps: newRegSteps,
       };
     }
     case actionTypes.NEXT_STEP: {
