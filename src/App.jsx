@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useReducer } from "react";
-import { FirstForm } from "./RegForms/form";
+import { FirstForm } from "./form";
 import { initalState, reducer } from "./reducer";
 
 export const InputContext = React.createContext();
