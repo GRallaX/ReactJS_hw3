@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+*:before,
+*:after,
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input,
+label,
+button,
+textarea {
+  font-family: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  height: min(100vh);
+}
+
+.form_wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.form_wrapper .reg_form {
+  width: min(350px);
+  height: min(450px);
+  padding: 20px 50px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  border: black 2px solid;
+}
+.form_wrapper .reg_form .data_wrapper {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.form_wrapper .reg_form .data_wrapper h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form_wrapper .reg_form .data_wrapper .lbl {
+  display: block;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
 }
+.form_wrapper .reg_form .data_wrapper .inp {
+  display: block;
+  width: 250px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  border: black 2px solid;
+  padding: 4px;
+}
+.form_wrapper .reg_form .data_wrapper .inp:focus {
+  outline: 1px solid;
+}
+.form_wrapper .reg_form .data_wrapper .data_verif {
+  display: flex;
+  flex-direction: column;
+}
+.form_wrapper .reg_form .data_wrapper .data_verif span {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+.form_wrapper .reg_form .buttons {
+  flex: 0 99 auto;
+  display: flex;
+  justify-content: space-around;
+}
+.form_wrapper .reg_form .buttons button {
+  border: black 2px solid;
+  height: 40px;
+  width: 115px;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: white;
+}
+.form_wrapper .reg_form .buttons button:hover, .form_wrapper .reg_form .buttons button:focus {
+  outline: 1px solid;
+  cursor: pointer;
+}/*# sourceMappingURL=App.css.map */

@@ -14,8 +14,6 @@ export const FirstForm = () => {
     });
   };
 
-  console.log(state);
-
   const handlePreviousStep = e => {
     e.preventDefault();
     dispatch({
@@ -60,57 +58,63 @@ export const FirstForm = () => {
   if (!state.dataSubmitted) {
     return (
       <form className="reg_form">
-        <h2>Шаг {state.currentStep}</h2>
-        {inputsForRender}
-        {state.currentStep > 1 && (
-          <button type="button " onClick={handlePreviousStep}>
-            Previous
-          </button>
-        )}
-        {state.registrationSteps.length > state.currentStep && (
-          <button type="button" onClick={handleNextStep}>
-            Next
-          </button>
-        )}
+        <div className="data_wrapper">
+          <h2>Step {state.currentStep}</h2>
+          {inputsForRender}
+        </div>
+        <div className="buttons">
+          {state.currentStep > 1 && (
+            <button type="button " onClick={handlePreviousStep}>
+              Previous
+            </button>
+          )}
+          {state.registrationSteps.length > state.currentStep && (
+            <button type="button" onClick={handleNextStep}>
+              Next
+            </button>
+          )}
 
-        {state.registrationSteps.length === state.currentStep && (
-          <button type="submit" onClick={handleSubmitData}>
-            Submit
-          </button>
-        )}
+          {state.registrationSteps.length === state.currentStep && (
+            <button type="submit" onClick={handleSubmitData}>
+              Submit
+            </button>
+          )}
+        </div>
       </form>
     );
   } else {
     return (
       <form className="reg_form">
-        <h2>
-          Thank you for <br />
-          registering with us
-        </h2>
-        <div className="data_verif">
-          {state.registrationSteps.map(step => {
-            const infoForRender = [];
-            for (let input in step) {
-              if (
-                step[input].value &&
-                (step[input].type === "text" || step[input].type === "email")
-              ) {
-                infoForRender.push(
-                  <>
-                    <span
-                      key={step[input].label}
-                    >{`${step[input].label}: ${step[input].value}`}</span>
-                    <br />
-                  </>
-                );
+        <div className="data_wrapper">
+          <h2>
+            Thank you for <br />
+            registering with us
+          </h2>
+          <div className="data_verif">
+            {state.registrationSteps.map(step => {
+              const infoForRender = [];
+              for (let input in step) {
+                if (
+                  step[input].value &&
+                  (step[input].type === "text" || step[input].type === "email")
+                ) {
+                  infoForRender.push(
+                    <span key={step[input].label}>
+                      <strong>{`${step[input].label}: `}</strong>
+                      {`${step[input].value}`}
+                    </span>
+                  );
+                }
               }
-            }
-            return infoForRender;
-          })}
+              return infoForRender;
+            })}
+          </div>
         </div>
-        <button type="button " onClick={handleSubmitData}>
-          Edit
-        </button>
+        <div className="buttons">
+          <button type="button " onClick={handleSubmitData}>
+            Edit
+          </button>
+        </div>
       </form>
     );
   }

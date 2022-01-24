@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <InputContext.Provider value={{ state, dispatch }}>
-      <div>
+      <div className="form_wrapper">
         <FirstForm />
       </div>
     </InputContext.Provider>
